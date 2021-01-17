@@ -1,4 +1,4 @@
-coding: utf-8
+# coding: utf-8
 
 from __future__ import unicode_literals
 
@@ -84,6 +84,7 @@ class YoutubeBaseInfoExtractor(InfoExtractor):
         Attempt to log in to YouTube.
         True is returned if successful or skipped.
         False is returned if login failed.
+
         If _LOGIN_REQUIRED is set and no authentication was provided, an error is raised.
         """
         username, password = self._get_login_info()
@@ -3471,6 +3472,7 @@ class YoutubeSearchURLIE(YoutubeSearchIE):
         'url': 'https://www.youtube.com/results?q=test&sp=EgQIBBgB',
         'only_matching': True,
     }]
+
     def _real_extract(self, url):
         mobj = re.match(self._VALID_URL, url)
         query = compat_urllib_parse_unquote_plus(mobj.group('query'))

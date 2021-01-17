@@ -60,7 +60,7 @@ class YoutubeBaseInfoExtractor(InfoExtractor):
 
     _LOOKUP_URL = 'https://accounts.google.com/_/signin/sl/lookup'
     _CHALLENGE_URL = 'https://accounts.google.com/_/signin/sl/challenge'
-    _TFA_URL = 'https://accounts.google.com/_/signin/challenge?hl=en&TL={0}'
+    _TFA_URL = 'https://accounts.google.com/_/signin/challenge?hl=ko&TL={0}'
 
     _NETRC_MACHINE = 'youtube'
     # If True it will raise an error if no login info is provided
@@ -70,7 +70,7 @@ class YoutubeBaseInfoExtractor(InfoExtractor):
 
     def _set_language(self):
         self._set_cookie(
-            '.youtube.com', 'PREF', 'f1=50000000&f6=8&hl=en',
+            '.youtube.com', 'PREF', 'f1=50000000&f6=8&hl=ko',
             # YouTube sets the expire time to about two months
             expire_time=time.time() + 2 * 30 * 24 * 3600)
 
@@ -135,7 +135,7 @@ class YoutubeBaseInfoExtractor(InfoExtractor):
             [
                 None, None,
                 [2, 1, None, 1,
-                 'https://accounts.google.com/ServiceLogin?passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Fnext%3D%252F%26action_handle_signin%3Dtrue%26hl%3Den%26app%3Ddesktop%26feature%3Dsign_in_button&hl=en&service=youtube&uilel=3&requestPath=%2FServiceLogin&Page=PasswordSeparationSignIn',
+                 'https://accounts.google.com/ServiceLogin?passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Fnext%3D%252F%26action_handle_signin%3Dtrue%26hl%3Den%26app%3Ddesktop%26feature%3Dsign_in_button&hl=ko&service=youtube&uilel=3&requestPath=%2FServiceLogin&Page=PasswordSeparationSignIn',
                  None, [], 4],
                 1, [None, None, []], None, None, None, True
             ],
@@ -158,7 +158,7 @@ class YoutubeBaseInfoExtractor(InfoExtractor):
             user_hash,
             None, 1, None, [1, None, None, None, [password, None, True]],
             [
-                None, None, [2, 1, None, 1, 'https://accounts.google.com/ServiceLogin?passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Fnext%3D%252F%26action_handle_signin%3Dtrue%26hl%3Den%26app%3Ddesktop%26feature%3Dsign_in_button&hl=en&service=youtube&uilel=3&requestPath=%2FServiceLogin&Page=PasswordSeparationSignIn', None, [], 4],
+                None, None, [2, 1, None, 1, 'https://accounts.google.com/ServiceLogin?passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Fnext%3D%252F%26action_handle_signin%3Dtrue%26hl%3Den%26app%3Ddesktop%26feature%3Dsign_in_button&hl=ko&service=youtube&uilel=3&requestPath=%2FServiceLogin&Page=PasswordSeparationSignIn', None, [], 4],
                 1, [None, None, []], None, None, None, True
             ]]
 
@@ -1316,7 +1316,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
     def _get_subtitles(self, video_id, webpage):
         try:
             subs_doc = self._download_xml(
-                'https://video.google.com/timedtext?hl=en&type=list&v=%s' % video_id,
+                'https://video.google.com/timedtext?hl=ko&type=list&v=%s' % video_id,
                 video_id, note=False)
         except ExtractorError as err:
             self._downloader.report_warning('unable to download video subtitles: %s' % error_to_compat_str(err))
@@ -1643,7 +1643,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
         is_music = re.match(r'^https?:\/\/music\.youtube\.com\/.+', url) is not None
 
         # Get video webpage
-        url = proto + '://www.youtube.com/watch?v=%s&gl=US&hl=en&has_verified=1&bpctr=9999999999' % video_id
+        url = proto + '://www.youtube.com/watch?v=%s&gl=KR&hl=ko&has_verified=1&bpctr=9999999999' % video_id
         video_webpage, urlh = self._download_webpage_handle(url, video_id)
 
         qs = compat_parse_qs(compat_urllib_parse_urlparse(urlh.geturl()).query)
@@ -3601,7 +3601,7 @@ class YoutubeTruncatedURLIE(InfoExtractor):
         'url': 'https://www.youtube.com/watch?feature=foo',
         'only_matching': True,
     }, {
-        'url': 'https://www.youtube.com/watch?hl=en-GB',
+        'url': 'https://www.youtube.com/watch?hl=ko-GB',
         'only_matching': True,
     }, {
         'url': 'https://www.youtube.com/watch?t=2372',

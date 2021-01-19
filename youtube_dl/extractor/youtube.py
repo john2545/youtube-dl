@@ -3601,7 +3601,7 @@ class YoutubeTruncatedURLIE(InfoExtractor):
         'url': 'https://www.youtube.com/watch?feature=foo',
         'only_matching': True,
     }, {
-        'url': 'https://www.youtube.com/watch?hl=ko-GB',
+        'url': 'https://www.youtube.com/watch?hl=ko-KR',
         'only_matching': True,
     }, {
         'url': 'https://www.youtube.com/watch?t=2372',
